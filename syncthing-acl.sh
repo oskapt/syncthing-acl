@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-REPOSITORY="/export/storage"
+: ${REPOSITORY:="/srv/data"}
 ACLPATH="$REPOSITORY/.acls"
 APPNAME="syncthing-acl"
 TEMPACLFILE=/tmp/$APPNAME.$$
@@ -42,7 +42,8 @@ fi
 syncthing-log() {
 	# $1 Log Level $2 Message
 	if (( $1 <= $LOGLEVEL )); then
-	 	logger $LOGGEROPTS -t $APPNAME "$2"
+	 	#logger $LOGGEROPTS -t $APPNAME "$2"
+                echo "$2"
 	fi
 }
 export -f syncthing-log
